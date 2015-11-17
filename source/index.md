@@ -2,9 +2,7 @@
 title: API Reference
 
 language_tabs:
-  - shell
-  - ruby
-  - python
+  - Example: json
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -18,151 +16,288 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Bento for Business API! You can use our API to access Bento's API endpoints. 
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We have language bindings in Shell and Java! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
-This example API documentation page was created with [Slate](http://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
-# Authentication
+# Sessions
 
-> To authorize, use this code:
+Sessions are used to control access and login or logout an user.
 
-```ruby
-require 'kittn'
+## Create a Session
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+> To create a new session, use this code:
+
+```json
+
+{
+  "loginName": "example@bentoforbusiness.com",
+  "password": "MyPassword1"
+}
 ```
 
-```python
-import kittn
 
-api = kittn.authorize('meowmeowmeow')
+
+> The response will be a token in this format:
+
+```json
+{
+  "token":"146|KYpRTwH75OMl7y0zFE_T03hEkLSIGdoSdTH0eby5cug\u003d"
+}
 ```
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+Creates a new Session for an existing Business. Each Session Token is valid for 3 hours.
 
-> Make sure to replace `meowmeowmeow` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+### HTTP Request
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+`POST /api/sessions`
 
-`Authorization: meowmeowmeow`
+### Attributes
+
+Parameter | Required | Description
+--------- | -------  | -----------
+loginName | true     | The email you provided when signing up your business.
+password  | true     | Your password
+
+
+The authorization token needs to be passed on to the server as an Authorization Header, using the `Bearer` authentication type.
+
+`Authorization: Bearer  146|KYpRTwH75OMl7y0zFE_T03hEkLSIGdoSdTH0eby5cug\u003d`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+After receiving your `token`, it must be used as an `Authorization` header for all subsequent calls.
 </aside>
 
-# Kittens
+## Delete a Session
 
-## Get All Kittens
+Deleting a session logs the user out of the api.
 
-```ruby
-require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
+### HTTP Request
+
+`DELETE /api/sessions`
+
+You will receive a `200 OK` response from the server back but no content.
+
+
+## Update Password
+
+### HTTP Request
+
+`PUT /api/sessions`
+
+### Attributes
+
+Parameter | Required | Description
+--------- | -------  | -----------
+loginName | true     | The email you provided when signing up your business.
+password  | true     | Your password
+
+
+```json
+
+{
+  "loginName": "example@bentoforbusiness.com",
+  "password": "MyPassword1"
+}
 ```
 
-```python
-import kittn
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
+
+> The response will be a token in this format:
+
+```json
+{
+  "token":"146|KYpRTwH75OMl7y0zFE_T03hEkLSIGdoSdTH0eby5cug\u003d"
+}
 ```
 
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+
+# Business
+
+
+
+
+## Get the Current Business
+
+
+### HTTP Request
+
+`GET /api/businesses/me`
+
+
+This will return the current business object.
+
+
+> The business Object looks like this:
+
+```json
+{
+  businessId: 1,
+  "additionalInfo": {
+    "employeeQty": "6-10",
+    "industry": "Software",
+    "promoCode": "",  
+  }
+  "address": {
+    "active": true,
+    "addressType": "business",
+    "city": "San Francisco",
+    "state": "CA",
+    "street": "300 Beale St",
+    "zipCode": "94105" 
+  },
+  "approvalStatus": "Approved",
+  "balance": 20000.0,
+  "companyName": "Bento",
+  "phone": "5551234567",
+  "timeZone": "America/Los_Angeles"
+}
+
+
 ```
 
-> The above command returns JSON structured like this:
+
+
+
+## Update a business
+
+### HTTP Request
+
+
+`PUT /api/businesses/me`
+
+
+### Attributes
+
+Parameter    |  Description
+---------    |    -----------
+companyName  | The company Name
+nameOnCard   | The name that appears on the 4th line of the card
+phone        | The business phone number
+taxId        | The Business Tax Id
+businessStructure| The Business Structure (Sole_Proprietorship, Partnership, LLC, S_Corp, C_Corp, Non_Profit)
+additionalInfo| An object containing additional info
+address| An object containing the business Address.
+
+
+### Additional Info Attributes
+
+Parameter    |  Description
+---------    |    -----------
+employeeQty  | The number of Employees 
+industry     | The industry of the business
+promoCode    |  Promo code used during enrollment
+heardBentoFrom| Where did you hear about Bento
+
+### Address Attributes
+
+Parameter    |  Description
+---------    |    -----------
+street       |  Business Street
+city         |  Business City
+addressAdditionals | Additional Info (Apt #, suite, etc)
+state        | Business State
+country      | Business Country
+zipCode      | Business Zipcode
+
+
+This will return the current business object.
+
+> The business Object looks like this:
+
+```json
+
+{
+  "businessId": 1,
+  "additionalInfo": {
+    "employeeQty": "6-10",
+    "industry": "Software",
+    "promoCode": ""  
+  }, 
+  "address": {
+    "active": true,
+    "addressType": "business",
+    "city": "San Francisco",
+    "state": "CA",
+    "street": "300 Beale St",
+    "zipCode": "94105" 
+  },
+  "approvalStatus": "Approved",
+  "balance": 20000.0,
+  "companyName": "Bento",
+  "businessStructure": "Partnership",
+  "phone": "5551234567",
+  "nameOnCard": "BENTO FOR BUSINESS", 
+  "timeZone": "America/Los_Angeles",
+  "taxId": "455778888"
+}
+
+
+```
+
+# Users
+
+## Get a list of users
+
+### HTTP Request
+
+
+`GET /api/users`
+
+Gets a list of users associated with the current business.
+
+
+> Returns an array of users
 
 ```json
 [
   {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
+    "homePhone": "5551234567",
+    "address": {
+      "street": "414 Brannan St.",
+      "city": "San Francisco",
+      "zipCode": "94107",
+      "addressType": "business",
+      "state": "CA",
+      "active": true,
+      "deleted": false
+    },
+    "userId": 14,
+    "email": "businessowner@example.com",
+    "firstName": "John",
+    "lastName": "Smith",
+    "phone": "4159876543",
+    "birthDate": 161049600000,
+    "approvalStatus": "Approved"
+  }, 
+  {
+    "userId": 357,
+    "email": "adminuser@example.com",
+    "firstName": "Admin",
+    "lastName": "Wong",
+    "approvalStatus": "Approved"
   },
   {
-    "id": 2,
-    "name": "Isis",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+    "userId": 361,
+    "firstName": "Steph",
+    "lastName": "Perez",
+    "birthDate": 275986800000,
+    "approvalStatus": "Approved"
   }
 ]
+
 ```
 
-This endpoint retrieves all kittens.
+## Create a new Admin
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
 
-### Query Parameters
+`POST /api/users`
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
 
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Isis",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">If you're not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
 
