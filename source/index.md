@@ -928,11 +928,11 @@ Activates a card for the first time
 
 Parameter    |  Description
 ---------    |    -----------
-"lastFour"     |  The last four numbers of the card
+lastFour     |  The last four numbers of the card
 
 ```json
 
-  {lastFour: 1243}
+  {"lastFour": 1243}
 
 ```
 
@@ -959,10 +959,11 @@ The response of this call will be the new card thas has been issued.
 {
     "allowedCategories": [
         {
-            "transactionCategoryId": 6
+ 
+            "transactionCategoryId": 5,
         },
         {
-            "transactionCategoryId": 3
+            "transactionCategoryId": 13,
         },
     ],
     "allowedDays": [
@@ -982,7 +983,7 @@ The response of this call will be the new card thas has been issued.
         "email": "employee2@somecompany.com",
         "firstName": "EMPLOYEE",
         "lastName": "NAME",
-        "phone": "4564564456"
+        "phone": "4564564456",
     }
 }
 
@@ -1061,6 +1062,7 @@ You will get a 200 OK Response with the deleted card as an object.
     }
 ]
 ```
+
 
 ## Get a funding source
 
@@ -1742,8 +1744,7 @@ cardLifeCycle | show only transaction for cards with specific lifecycle
             "tags": [],
             "transactionDate": "Nov 15, 2015 4:33:27 PM",
             "type": "CREDIT"
-        }
-    ], 
+        }],
     "size": 4
 }
 
