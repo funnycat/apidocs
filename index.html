@@ -177,8 +177,8 @@ After receiving your `token`, it must be used as an `Authorization` header for a
   </span><span class="nt">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"employeeQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6-10"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Software"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"promoCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">  
-  </span><span class="err">}</span><span class="w">
+    </span><span class="nt">"promoCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="p">}</span><span class="w">
   </span><span class="s2">"address"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"addressType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"business"</span><span class="p">,</span><span class="w">
@@ -1138,7 +1138,7 @@ After receiving your `token`, it must be used as an `Authorization` header for a
 </tr>
 </tbody></table>
 <pre class="highlight json"><code><span class="w">
-  </span><span class="p">{</span><span class="err">lastFour:</span><span class="w"> </span><span class="err">1243</span><span class="p">}</span><span class="w">
+  </span><span class="p">{</span><span class="nt">"lastFour"</span><span class="p">:</span><span class="w"> </span><span class="mi">1243</span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 
@@ -1163,10 +1163,10 @@ After receiving your `token`, it must be used as an `Authorization` header for a
     </span><span class="nt">"allowedCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
 
-            </span><span class="nt">"transactionCategoryId"</span><span class="p">:</span><span class="w"> </span><span class="mi">-6</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"transactionCategoryId"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
         </span><span class="err">}</span><span class="p">,</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"transactionCategoryId"</span><span class="p">:</span><span class="w"> </span><span class="mi">-3</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"transactionCategoryId"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
         </span><span class="err">}</span><span class="p">,</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"allowedDays"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1231,82 +1231,81 @@ After receiving your `token`, it must be used as an `Authorization` header for a
 <p><code class="prettyprint">GET /api/fundingsources</code></p>
 
 <blockquote>
-<p>Example of a response of an array of FundingSources
-&ldquo;`json</p>
+<p>Example of a response of an array of FundingSources</p>
 </blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"autoReloads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">5000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"autoReloadId"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"bentoType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.bentoforbusiness.entity.funding.TemporalAutoReload"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEEKLY"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"timeInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"updatedDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1447465924000</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"autoReloadId"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"bentoType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.bentoforbusiness.entity.funding.BalanceAutoReload"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"updatedDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1447271882000</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"bentoType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.bentoforbusiness.entity.funding.FundingSource"</span><span class="p">,</span><span class="w">        
+        </span><span class="nt">"fundingSourceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">41</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Account : 3453"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"serviceClassName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.bentoforbusiness.integrations.marqeta.fundingsources.MarqetaFundingSourceService"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
 
-<p>[
-    {
-        &quot;autoReloads&rdquo;: [
-            {
-                &ldquo;active&rdquo;: true,
-                &ldquo;amount&rdquo;: 5000.0,
-                &ldquo;autoReloadId&rdquo;: 6,
-                &ldquo;bentoType&rdquo;: &ldquo;com.bentoforbusiness.entity.funding.TemporalAutoReload&rdquo;,
-                &ldquo;period&rdquo;: &ldquo;WEEKLY&rdquo;,
-                &ldquo;timeInterval&rdquo;: 2,
-                &ldquo;updatedDate&rdquo;: 1447465924000
-            },
-            {
-                &ldquo;active&rdquo;: false,
-                &ldquo;amount&rdquo;: 1000.0,
-                &ldquo;autoReloadId&rdquo;: 73,
-                &ldquo;bentoType&rdquo;: &ldquo;com.bentoforbusiness.entity.funding.BalanceAutoReload&rdquo;,
-                &ldquo;threshold&rdquo;: 1000.0,
-                &ldquo;updatedDate&rdquo;: 1447271882000
-            }
-        ],
-        &ldquo;bentoType&rdquo;: &ldquo;com.bentoforbusiness.entity.funding.FundingSource&rdquo;,<br>
-        &ldquo;fundingSourceId&rdquo;: 41,
-        &ldquo;name&rdquo;: &ldquo;Account : 3453&rdquo;,
-        &ldquo;serviceClassName&rdquo;: &ldquo;com.bentoforbusiness.integrations.marqeta.fundingsources.MarqetaFundingSourceService&rdquo;,
-        &ldquo;status&rdquo;: &ldquo;ACTIVE&rdquo;
-    }
-]</p>
-<pre class="highlight plaintext"><code>
-## Get a funding source
+<h2 id="get-a-funding-source">Get a funding source</h2>
 
-### HTTP Request
+<h3 id="http-request">HTTP Request</h3>
 
-`GET /api/fundingsources/&lt;fundingSourceId&gt;`
+<p><code class="prettyprint">GET /api/fundingsources/&lt;fundingSourceId&gt;</code></p>
 
-
-&lt;aside class="notice"&gt;
+<aside class="notice">
 You can use `default` as the fundingSourceId to get the default funding source.
-&lt;/aside&gt;
+</aside>
 
-&gt; Example of a response of a fundingsource
+<blockquote>
+<p>Example of a response of a fundingsource</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+        </span><span class="nt">"autoReloads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">5000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"autoReloadId"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"bentoType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.bentoforbusiness.entity.funding.TemporalAutoReload"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEEKLY"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"timeInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"updatedDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1447465924000</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"autoReloadId"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"bentoType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.bentoforbusiness.entity.funding.BalanceAutoReload"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"updatedDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1447271882000</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"bentoType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.bentoforbusiness.entity.funding.FundingSource"</span><span class="p">,</span><span class="w">        
+        </span><span class="nt">"fundingSourceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">41</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Account : 3453"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"serviceClassName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.bentoforbusiness.integrations.marqeta.fundingsources.MarqetaFundingSourceService"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 
-```json
-
-{
-        "autoReloads": [
-            {
-                "active": true,
-                "amount": 5000.0,
-                "autoReloadId": 6,
-                "bentoType": "com.bentoforbusiness.entity.funding.TemporalAutoReload",
-                "period": "WEEKLY",
-                "timeInterval": 2,
-                "updatedDate": 1447465924000
-            },
-            {
-                "active": false,
-                "amount": 1000.0,
-                "autoReloadId": 73,
-                "bentoType": "com.bentoforbusiness.entity.funding.BalanceAutoReload",
-                "threshold": 1000.0,
-                "updatedDate": 1447271882000
-            }
-        ],
-        "bentoType": "com.bentoforbusiness.entity.funding.FundingSource",        
-        "fundingSourceId": 41,
-        "name": "Account : 3453",
-        "serviceClassName": "com.bentoforbusiness.integrations.marqeta.fundingsources.MarqetaFundingSourceService",
-        "status": "ACTIVE"
-    }
-
-</code></pre>
+</span></code></pre>
 
 <h2 id="create-a-funding-source">Create a Funding Source</h2>
 
@@ -2199,9 +2198,9 @@ You can use `default` as the fundingSourceId to get the default funding source.
             </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
             </span><span class="nt">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nov 15, 2015 4:33:27 PM"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDIT"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"size"</span><span class="err">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
-</span><span class="err">}</span><span class="w">
+        </span><span class="p">}],</span><span class="w">
+    </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
 
 </span></code></pre>
