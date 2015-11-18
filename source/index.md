@@ -958,12 +958,11 @@ The response of this call will be the new card thas has been issued.
 ```json
 {
     "allowedCategories": [
-        {
- 
-            "transactionCategoryId": 5,
+        { 
+            "transactionCategoryId": 5
         },
         {
-            "transactionCategoryId": 13,
+            "transactionCategoryId": 13
         },
     ],
     "allowedDays": [
@@ -983,7 +982,7 @@ The response of this call will be the new card thas has been issued.
         "email": "employee2@somecompany.com",
         "firstName": "EMPLOYEE",
         "lastName": "NAME",
-        "phone": "4564564456",
+        "phone": "4564564456"
     }
 }
 
