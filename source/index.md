@@ -5,7 +5,7 @@ language_tabs:
   - Example: json
 
 toc_footers:
-  - If you have questions contact api@bentoforbusiness.com
+  - Questions? Click <a href="mailto:api@bentoforbusiness.com">Here</a>
 
 includes:
   - errors
