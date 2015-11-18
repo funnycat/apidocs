@@ -138,7 +138,7 @@ This will return the current business object.
   "additionalInfo": {
     "employeeQty": "6-10",
     "industry": "Software",
-    "promoCode": "",  
+    "promoCode": ""
   }
   "address": {
     "active": true,
@@ -928,7 +928,7 @@ Activates a card for the first time
 
 Parameter    |  Description
 ---------    |    -----------
-lastFour     |  The last four numbers of the card
+"lastFour"     |  The last four numbers of the card
 
 ```json
 
@@ -959,11 +959,10 @@ The response of this call will be the new card thas has been issued.
 {
     "allowedCategories": [
         {
- 
-            "transactionCategoryId": -6,
+            "transactionCategoryId": 6
         },
         {
-            "transactionCategoryId": -3,
+            "transactionCategoryId": 3
         },
     ],
     "allowedDays": [
@@ -983,7 +982,7 @@ The response of this call will be the new card thas has been issued.
         "email": "employee2@somecompany.com",
         "firstName": "EMPLOYEE",
         "lastName": "NAME",
-        "phone": "4564564456",
+        "phone": "4564564456"
     }
 }
 
@@ -1030,6 +1029,7 @@ You will get a 200 OK Response with the deleted card as an object.
 
 
 > Example of a response of an array of FundingSources
+
 ```json
 
 [
@@ -1060,7 +1060,6 @@ You will get a 200 OK Response with the deleted card as an object.
         "status": "ACTIVE"
     }
 ]
-
 ```
 
 ## Get a funding source
@@ -1743,7 +1742,8 @@ cardLifeCycle | show only transaction for cards with specific lifecycle
             "tags": [],
             "transactionDate": "Nov 15, 2015 4:33:27 PM",
             "type": "CREDIT"
-        },
+        }
+    ], 
     "size": 4
 }
 
