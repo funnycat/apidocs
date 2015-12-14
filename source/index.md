@@ -63,6 +63,8 @@ password  | true     | Your password
 
 The authorization token needs to be passed on to the server as an Authorization Header, using the `Bearer` authentication type.
 
+Password should be at least 8 chars, with at least one number and one char.
+
 `Authorization: Bearer  146|KYpRTwH75OMl7y0zFE_T03hEkLSIGdoSdTH0eby5cug\u003d`
 
 <aside class="notice">
@@ -347,7 +349,7 @@ type         |  Should be set to "BusinessAdmin"
 
 ```
 
-## Update an User
+## Update a User
 
 ### HTTP Request
 
@@ -357,7 +359,7 @@ type         |  Should be set to "BusinessAdmin"
 
 <aside class="notice">You can use "me" as userId to get information about the current user.</aside>
 
-Updates an User
+Updates a User
 
 
 ### Attributes
@@ -403,13 +405,13 @@ zipCode      | User Zipcode
 
 ```
 
-## Delete an user
+## Delete a User
 
 ### Http Request
 
 `DELETE /api/users/<userId>`
 
-Deletes an user. You should get an 200 OK back but no content when the user is deleted.
+Deletes a user. You should get an 200 OK back but no content when the user is deleted.
 
 <aside class="notice">You can use "me" as userId to get information about the current user.</aside>
 
