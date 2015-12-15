@@ -46,7 +46,7 @@ Sessions are used to control access and login or logout an user.
 }
 ```
 
-Creates a new Session for an existing Business. Each Session Token is valid for 3 hours.
+Creates a new Session for an existing Business. Each Session Token is valid for 3 hours. Password requires at least one letter and at least one number.
 
 
 ### HTTP Request
@@ -814,7 +814,7 @@ Gets all cards for the business
 ## Create a card
 
 Creates a new Card. 
-  You will have to specify if you want an utility card or an employee card
+  You will have to specify if you want an utility card or an employee card. A utility card is meant for a specific type of spending (E.G. "Gas Card" or "Happy Hour"), whereas an employee card is meant for use by a specific employee. 
 
 ### HTTP Request
 
@@ -830,7 +830,7 @@ allowedCategories | an array of allowedCategories
 allowedCategoriesActive | boolean indicating if the allowed categories control is active
 allowedDays | an array of allowed days [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY]
 allowedDaysActive | boolean indicating if the allowed days control is active
-spendingLimit | an object controlling the spending limit
+spendingLimit | an object controlling the spending limit (see below)
 user | Used only on employee cards - An user object 
 alias | Used only on utility card - The alias of the card.
 
@@ -1122,7 +1122,7 @@ Creates a new funding source
 Parameter    |  Description
 ---------    |    -----------
 createData  |  Data to be passed to the funding source service
-name  | The name of this fundingsource
+name  | The name of this funding source
 service | The service that you are using to load funds. 
 
 
@@ -1142,7 +1142,7 @@ account_type | the account type
 routing_number | the routing number 
 
 
-<aside class="notice">Note the format of the fields on createData is diffenrent because is passed on to the provider.</aside>
+<aside class="notice">Note the format of the fields on createData is different because is passed on to the provider.</aside>
 
 
 
@@ -1164,7 +1164,7 @@ routing_number | the routing number
 
 ## Verify Funding Source
 
-Verifies that funding source and make it available to use.
+Verifies that funding source and make it available to use. The "amount" parameters should match the values of the microdeposits made in the user's bank account after they initiate the connection. 
 
 ### HTTP Request
 
@@ -1198,7 +1198,7 @@ The response will be a 200 OK with the deleted object as content.
 
 ## Load Money
 
-Loads money into your bento account
+Loads money into your Bento account
 
 ### HTTP Request
 
@@ -1221,7 +1221,7 @@ amount  | The amount to load
 
 ## List Loads
 
-List loads for a specific fundingsource or for the business
+List loads for a specific funding source or for the business
 
 ### HTTP Request
 
@@ -1270,7 +1270,7 @@ changeStatusDate | The date of the last status change
 
 
 
-## Get an Autoreload
+## Get an Auto Reload
 
 ### HTTP Request
 
@@ -1866,7 +1866,7 @@ The return will be a 200 OK with the updated transaction
 `POST /trasnactions/<transactionId>/receipts`
 
 The content should be the image to uploaded encoded using either Base64 or Binary
-<aside class="notice">Maximum size for receipts is 20Mb</aside>
+<aside class="notice">Maximum size for receipts is 20Mb. Only image files and PDFs are accepted.</aside>
 
 
 
